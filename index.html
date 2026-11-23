@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eeece7">
+  <meta name="description" content="Explore Aziz Zouari's embedded engineering portfolio from a working 3D electronics bench.">
+  <title>At the Bench | Aziz Zouari</title>
+  <link rel="preload" href="fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="bench.css?v=workshop-fit">
+  <link rel="stylesheet" href="bench-terminal.css?v=workshop">
+  <script src="vendor/three.min.js" defer></script>
+  <script src="bench-model.js?v=workshop-fit" defer></script>
+  <script src="bench-files.js" defer></script>
+  <script src="bench-terminal.js?v=workshop" defer></script>
+  <script src="bench-audio.js" defer></script>
+  <script src="bench.js?v=workshop" defer></script>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="identity" href="index.html"><span class="logo" aria-hidden="true">AZ</span><div><strong>Aziz Zouari</strong><small>Embedded software engineer</small></div></a>
+    <nav aria-label="Portfolio links"><a href="projects.html">Projects</a><a href="resume.html">Résumé</a><button id="sound" type="button" aria-pressed="false"><i class="speaker" aria-hidden="true"></i><span class="sound-label">Sound off</span></button></nav>
+  </header>
+  <main aria-label="Interactive electronics portfolio">
+    <div class="workspace" id="workspace" data-station="overview">
+      <section class="scene" aria-label="3D electronics workbench">
+        <div id="render-area" tabindex="0" aria-label="Orbit the workbench with the arrow keys" aria-describedby="scene-help"></div>
+        <div class="intro" id="intro">
+          <p class="eyebrow location">Sousse, Tunisia</p>
+          <h1>At the <br>bench<span>.</span></h1>
+          <p>Firmware, circuit boards, and the instruments I use to see what’s happening between them.</p>
+          <button class="accent" type="button" data-open="display">Open terminal</button>
+        </div>
+        <div class="markers" id="markers" aria-label="Equipment in the scene">
+          <button type="button" data-open="display" class="marker">Display</button>
+          <button type="button" data-open="meter" class="marker">Multimeter</button>
+          <button type="button" data-open="logic" class="marker">Logic analyzer</button>
+          <button type="button" data-open="scope" class="marker">Oscilloscope</button>
+          <button type="button" data-open="board" class="marker">PCB</button>
+        </div>
+        <div class="station-heading" id="station-heading" hidden>
+          <p class="eyebrow" id="channel"></p>
+          <h2 id="station-title"></h2>
+        </div>
+        <section class="monitor-surface" id="monitor-surface" aria-label="Linux portfolio terminal" hidden>
+          <div id="terminal-root"></div>
+        </section>
+        <section class="instrument-controls" id="instrument-controls" aria-labelledby="station-title" hidden>
+          <div id="station-content"></div>
+        </section>
+        <div class="viewport-help">
+          <p id="scene-help">Drag to orbit · Select an instrument to inspect it</p>
+          <div class="scene-buttons">
+            <button id="expand-terminal" type="button" aria-pressed="false" hidden>Expand terminal</button>
+            <button id="overview" type="button" hidden>Back to bench</button>
+          </div>
+        </div>
+        <p class="fallback" id="fallback" hidden>3D rendering is unavailable on this device. The equipment and portfolio are available below.</p>
+      </section>
+    </div>
+    <nav class="dock" aria-label="Workbench equipment">
+      <button type="button" data-open="display"><span class="equipment display" aria-hidden="true"></span><span><b>Display</b><small>Linux portfolio terminal</small></span></button>
+      <button type="button" data-open="meter"><span class="equipment meter" aria-hidden="true"></span><span><b>Multimeter</b><small>Measure a circuit</small></span></button>
+      <button type="button" data-open="logic"><span class="equipment logic" aria-hidden="true"></span><span><b>Logic analyzer</b><small>Read a bus</small></span></button>
+      <button type="button" data-open="scope" aria-label="Oscilloscope"><span class="equipment scope" aria-hidden="true"></span><span><b><span class="long-label">Oscilloscope</span><span class="short-label">Scope</span></b><small>Inspect a waveform</small></span></button>
+      <button type="button" data-open="board"><span class="equipment board" aria-hidden="true"></span><span><b>PCB</b><small>Bench power &amp; firmware</small></span></button>
+    </nav>
+    <p class="sr-only" id="feedback" role="status"></p>
+    <audio id="bench-cue" preload="auto" src="sounds/enable.wav" hidden></audio>
+    <audio id="bench-keys" preload="auto" src="sounds/key.wav" hidden></audio>
+    <noscript><p class="fallback">JavaScript is required for the bench. Visit the <a href="projects.html">project index</a> or <a href="resume.html">résumé</a>.</p></noscript>
+  </main>
+</div>
+</body>
+</html>

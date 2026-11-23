@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111424">
+  <meta name="description" content="Play through Aziz Zouari's embedded engineering portfolio. Explore the lab, restore three circuits, and discover the projects and firmware behind the missions.">
+  <title>Signal Lab | Aziz Zouari</title>
+  <link rel="stylesheet" href="game.css?v=2">
+  <script src="lab-art.js" defer></script>
+  <script src="game.js?v=2" defer></script>
+</head>
+<body>
+<div class="cabinet">
+  <header class="masthead">
+    <div class="identity"><span class="chip-mark" aria-hidden="true"><i></i></span><div><b>Aziz Zouari</b><small>Embedded software engineer</small></div></div>
+    <nav aria-label="Portfolio links">
+      <a href="projects.html">Project index</a>
+      <a class="resume-link" href="resume.html">Résumé</a>
+    </nav>
+  </header>
+  <main class="game" aria-label="Signal Lab game">
+    <header class="hud">
+      <div class="location"><span id="room-number">00</span><div><small>ROOM</small><b id="room-name">Boot bay</b></div></div>
+      <div class="progress" aria-label="Mission progress"><span class="progress-label" id="progress-label">0 / 3 links restored</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <button id="map" type="button">Mission map</button>
+    </header>
+    <div class="stage">
+      <canvas id="world" tabindex="0" aria-label="Side-view electronics workshop" aria-describedby="controls-help objective"></canvas>
+      <p class="objective" id="objective" hidden><span>OBJECTIVE</span> <b id="objective-text"></b></p>
+      <div class="boost" id="boost" hidden></div>
+      <button class="locator" type="button" id="nearby" hidden></button>
+      <section class="launch" id="launch" aria-labelledby="title">
+        <p class="kicker"><span></span> <b id="launch-state">THREE SIGNAL LINKS OFFLINE</b></p>
+        <h1 id="title">Signal<span> Lab</span><i>.</i></h1>
+        <p>Walk through my workshop and bring three systems back online. Each mission opens a real project from my engineering portfolio.</p>
+        <div class="launch-actions"><button id="start" class="amber" type="button">Power on</button><a href="projects.html">Read the project index</a></div>
+      </section>
+    </div>
+    <div class="control-deck">
+      <div class="movement" aria-label="Movement controls">
+        <button type="button" data-move="left" aria-label="Walk left">←</button>
+        <button type="button" data-move="right" aria-label="Walk right">→</button>
+        <button type="button" id="jump" aria-label="Jump">↑ <span>Jump</span></button>
+      </div>
+      <p id="controls-help"><kbd>A</kbd> <kbd>D</kbd> Move <kbd>Space</kbd> Jump <kbd>E</kbd> Interact <span class="pointer-tip">Click a station to walk over</span></p>
+      <button class="inspect" type="button" id="inspect" disabled>Inspect</button>
+    </div>
+    <p class="visually-hidden" id="announcement" role="status"></p>
+    <noscript><p>Signal Lab needs JavaScript to play. <a href="projects.html">Read the project index</a> or <a href="resume.html">open the résumé</a>.</p></noscript>
+  </main>
+</div>
+<dialog class="terminal" id="terminal" aria-labelledby="terminal-title">
+  <div class="terminal-bar"><span id="terminal-channel">WORKSHOP TERMINAL</span><button id="close" type="button" aria-label="Close terminal" autofocus>Close <kbd>Esc</kbd></button></div>
+  <div class="terminal-body" id="terminal-body"></div>
+</dialog>
+</body>
+</html>

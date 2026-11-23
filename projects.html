@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Embedded engineering projects and experience of Aziz Zouari.">
+<title>Project index | Aziz Zouari</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css?v=workshop">
+</head>
+<body>
+<header class="top"><nav class="wrap nav" aria-label="Project navigation"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">AZ</span> Back to the bench</a><a href="resume.html">Résumé</a></nav></header>
+<main class="wrap">
+<div class="resume"><p class="eyebrow">Aziz Zouari · Embedded software engineer</p><h1>Project index</h1><p class="lede">Firmware, board bring-up, embedded Linux, and validation projects.</p></div><section id="projects" class="section">
+    <div class="sectionhead"><h2>Selected projects</h2><a class="textlink" href="https://github.com/Azizzr02?tab=repositories">All repositories</a></div>
+    <div class="projects">
+      <article class="project featured" style="display:block" id="bms">
+        <div class="projectbody">
+          <p class="eyebrow">SEGULA Technologies · Final-year project · 2026</p>
+          <h3>CAN-FD battery management test bench</h3>
+          <p>I built an STM32 firmware emulator and a Linux supervision path to exercise BMS-style temperature telemetry, state transitions, and fault handling on a bench.</p>
+          <div class="tags"><span>Embedded C</span><span>STM32G0B1RE</span><span>SocketCAN</span><span>Python</span></div>
+          <div class="flow" role="list" aria-label="Test bench architecture">
+            <div role="listitem"><b>STM32</b><small>ADC · state machine</small></div>
+            <div role="listitem"><b>CAN-FD</b><small>Telemetry · commands</small></div>
+            <div role="listitem"><b>Raspberry Pi</b><small>Decode · visualize</small></div>
+          </div>
+          <details><summary>Read the case study</summary>
+            <p>A timer gates the application loop at 10 Hz. The firmware filters analog readings, estimates temperature and its rate of change, and packs the health state into an eight-byte CAN-FD telemetry frame. A UART status line exposes the decoded fields and frame counters during bring-up.</p>
+            <p>On the Pi, SocketCAN receives the frames and the backend decodes them using a DBC file. FastAPI serves the React dashboard and streams live updates over WebSocket. The bench also supports commands for repeatable fault-handling tests.</p>
+            <p>I wrote Python and shell tooling for test execution and data capture, and documented the bench setup and validation procedures.</p>
+          </details>
+          <div class="repolinks"><a href="https://github.com/Azizzr02/BMS_STM32_Firmware">STM32 firmware</a><a href="https://github.com/Azizzr02/RPI-dashboard">Raspberry Pi dashboard</a></div>
+        </div>
+      </article>
+      <article class="project adas" id="adas"><div class="projectbody">
+        <p class="eyebrow">Team prototype · 2025</p>
+        <h3>Vision-to-control ADAS</h3>
+        <p>With Oussema, I built a prototype that connects YOLOP computer vision to STM32 motor control through a Yocto Linux gateway.</p>
+        <div class="tags"><span>YOLOP</span><span>Yocto Linux</span><span>CAN</span><span>STM32F407</span></div>
+        <div class="flow" role="list" aria-label="ADAS architecture"><div role="listitem"><b>Laptop</b><small>YOLOP inference</small></div><div role="listitem"><b>Yocto Pi</b><small>UDP to CAN</small></div><div role="listitem"><b>STM32</b><small>50 Hz PWM</small></div></div>
+        <details><summary>Read the case study</summary><p>The laptop derives lane offset and distance from camera input and sends the results to a Raspberry Pi 4 over UDP. The Pi runs a custom Yocto image with SocketCAN and bridges the messages onto the CAN bus.</p><p>The STM32F407 generates 50 Hz PWM for the motor controller. Running perception, protocol translation, and actuation on separate devices let us validate the end-to-end path from camera input to motor response.</p></details>
+        <div class="repolinks"><a href="https://github.com/Azizzr02/Adas-Project">Source code</a><a href="https://www.linkedin.com/posts/aziz-zouari_adas-autonomousvehicles-embeddedsystems-activity-7408880455871049728-kYnw">Demo video</a></div>
+      </div></article>
+      <article class="project thermal" id="thermal"><div class="projectbody">
+        <p class="eyebrow">PCB design and bring-up · 2025</p>
+        <h3>CAN ECU for thermal monitoring</h3>
+        <p>I designed and assembled a dual-STM32 bench system for automotive thermal management, from schematic capture and PCB layout to board bring-up.</p>
+        <div class="tags"><span>STM32</span><span>Altium Designer</span><span>ADC</span><span>PWM</span></div>
+        <details><summary>Read the case study</summary><p>The firmware measures temperature through the ADC, sends CAN alerts, and drives a cooling fan with PWM. I validated the board using an oscilloscope, multimeter, and logic analyzer, and documented the architecture, schematics, and validation results.</p></details>
+      </div></article>
+    </div>
+    <div class="more"><h3>More on GitHub</h3><ul>
+      <li><a href="https://github.com/Azizzr02/Dual-Card-Data-Transmission-System-STM32-UART-">Dual-board STM32 link</a><span>Interrupt-driven UART and ADC</span></li>
+      <li><a href="https://github.com/Azizzr02/Temperature-and-Gas-Detector">Arduino sensor prototype</a><span>Threshold alerts and circuit simulation</span></li>
+      <li><a href="https://github.com/Azizzr02/Zephyr-Workspace">Zephyr workspace</a><span>Template-based RTOS exploration</span></li>
+    </ul></div>
+  </section>
+  <section id="experience" class="section">
+    <div class="sectionhead"><h2>Experience</h2></div>
+    <div class="experience">
+      <article><p class="eyebrow">Feb – Jun 2026</p><h3>SEGULA Technologies</h3><p>Embedded Software Engineer Intern</p><p>Developed CAN-FD firmware and Python test tooling for the <a href="#bms">BMS validation bench</a>.</p></article>
+      <article><p class="eyebrow">Jun – Aug 2025</p><h3>YUCCAINFO</h3><p>IoT &amp; Embedded Systems Intern</p><p>Integrated STM32WB55 Zigbee sensor nodes with a Raspberry Pi coordinator and built a Node-RED dashboard to monitor readings and node status.</p></article>
+      <article><p class="eyebrow">Jun – Aug 2024</p><h3>SINDIBAD-GROUP</h3><p>Embedded Systems Intern</p><p>Built a Raspberry Pi monitoring system with I²C and UART sensors and improved data collection for testing.</p></article>
+    </div>
+    <div class="credentials">
+      <div><h3>Education</h3><p>Engineering Degree in Industrial Electronics, ENISo · 2026 · Highest Honors</p><p>Preparatory Cycle in Physics and Technology, IPEIM · 2023</p></div>
+      <div><h3>Robotics</h3><p>Third place, NXP Cup Tunisia · 2025</p><p>Programmed an autonomous model car using C++ and sensor fusion.</p></div>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <div><h2>Get in touch</h2><p>I’m interested in embedded firmware, system validation, and edge AI integration roles.</p></div>
+    <div class="actions"><a class="button primary" href="mailto:Aziz.zouari@eniso.u-sousse.tn">Email me</a><a class="button" href="https://www.linkedin.com/in/aziz-zouari">LinkedIn</a><a class="button" href="resume.html">Résumé</a></div>
+  </section>
+</main><footer class="wrap footer"><a href="index.html">Back to the bench</a><a href="https://github.com/Azizzr02">GitHub</a></footer></body></html>
